@@ -53,7 +53,9 @@ module.exports = function (config) {
       jsonContent.version = versionText;
 
       if (config.mode === 'development') {
-        jsonContent['content_security_policy'] = "script-src 'self' 'unsafe-eval'; object-src 'self'";
+        jsonContent['content_security_policy'] = {
+          "extension_pages": "script-src 'self' 'unsafe-eval'; object-src 'self';"
+        };
       }
 
       return JSON.stringify(jsonContent);
